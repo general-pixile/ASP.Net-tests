@@ -1,0 +1,341 @@
+			ASP.Net
+		internal practical examination set-2
+
+
+Q.1(B)Prepare only gui for mu erp home page, dashboard with login and logout functionality
+		
+<%@ Page Language="C#" AutoEventWireup="true"
+    CodeBehind="WebForm1.aspx.cs"
+    Inherits="PasswordChange.WebForm1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>ERP Dashboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+        }
+
+        /* Header */
+        .header {
+            height: 70px;
+            background-color: #1f4e78;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .welcome {
+            font-size: 15px;
+        }
+
+        .logout-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background-color: #b02a37;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 99px;
+            left: 0;
+            width: 220px;
+            height: 253px;
+            background-color: #263544;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            font-size: 15px;
+        }
+
+        .sidebar a:hover {
+            background-color: #1f4e78;
+        }
+
+        /* Main Content */
+        .main {
+            margin-left: 220px;
+            padding: 30px;
+        }
+
+        .page-title {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        /* Dashboard Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            color: #555;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .card .number {
+            font-size: 30px;
+            font-weight: bold;
+            color: #1f4e78;
+        }
+
+        /* Modules */
+        .modules {
+            margin-top: 30px;
+        }
+
+        .modules h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .module {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+
+        .module:hover {
+            transform: translateY(-3px);
+            transition: 0.2s;
+        }
+
+        .module h3 {
+            color: #1f4e78;
+            margin-bottom: 10px;
+        }
+
+        .module p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* Login */
+        .login-area {
+            margin-top: 30px;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .login-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background-color: #218838;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .module-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<form id="form1" runat="server">
+
+    <!-- HEADER -->
+
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+        <a href="#">🏠 Dashboard</a>
+        <a href="#">👨‍💼 Employees</a>
+        <a href="#">📦 Inventory</a>
+        <a href="#">💰 Finance</a>
+        <a href="#">📊 Reports</a>
+        <a href="#">⚙ Settings</a>
+
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+        <div class="page-title">
+            ERP Dashboard
+        <div class="login-area">
+
+            <h3>Login Status</h3>
+
+            <p style="margin: 10px 0;">
+                You are currently logged in as <b>Administrator</b>.
+            </p>
+
+            <asp:Button ID="btnLogin"
+                runat="server"
+                Text="Login"
+                CssClass="login-btn" />
+
+        </div>
+
+        </div>
+
+
+        <!-- DASHBOARD CARDS -->
+        <div class="cards">
+
+            <div class="card">
+                <h3>Total Employees</h3>
+                <div class="number">150</div>
+            </div>
+
+            <div class="card">
+                <h3>Total Products</h3>
+                <div class="number">450</div>
+            </div>
+
+            <div class="card">
+                <h3>Total Orders</h3>
+                <div class="number">85</div>
+            </div>
+
+            <div class="card">
+                <h3>Revenue</h3>
+                <div class="number">₹85K</div>
+            </div>
+
+        </div>
+
+
+        <!-- ERP MODULES -->
+        <div class="modules">
+
+            <h2>ERP Modules</h2>
+
+            <div class="module-grid">
+
+                <div class="module">
+                    <h3>Human Resources</h3>
+                    <p>Employee and staff information</p>
+                </div>
+
+                <div class="module">
+                    <h3>Inventory</h3>
+                    <p>Manage products and stock</p>
+                </div>
+
+                <div class="module">
+                    <h3>Finance</h3>
+                    <p>Financial information and transactions</p>
+                </div>
+
+                <div class="module">
+                    <h3>Sales</h3>
+                    <p>Sales and customer information</p>
+                </div>
+
+                <div class="module">
+                    <h3>Reports</h3>
+                    <p>View business reports</p>
+                </div>
+
+                <div class="module">
+                    <h3>Settings</h3>
+                    <p>System configuration</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- LOGIN AREA -->
+    <div class="header">
+
+        <div class="logo">
+            MY ERP
+        </div>
+
+        <div class="user-section">
+            <span class="welcome">
+                Welcome, Admin
+            </span>
+
+            <asp:Button ID="btnLogout"
+                runat="server"
+                Text="Logout"
+                CssClass="logout-btn" />
+        </div>
+
+    </div>
+
+
+    </div>
+
+</form>
+
+</body>
+</html>
